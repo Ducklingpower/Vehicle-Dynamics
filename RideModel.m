@@ -22,8 +22,8 @@ crr = 200;
 cfl = 200;
 crl = 200;
 
-lr  =   1;
-lf  =   1;
+lr  =   0.7;
+lf  =   0.8;
 laa =   0.635;
 lbb =   0.635;
 
@@ -174,20 +174,20 @@ A =[
 % B road inputs and external Moment_pitch
 
 B = [
-   0 0 0 0 0;
-   0 0 0 0 0;
-   0 0 0 0 0;
-   (kft/mfl) 0 0 0 0;  %front left tire
-   0 0 0 0 0;
-   0 (kft/mfr) 0 0 0;  %front right tire
-   0 0 0 0 0;
-   0  0 (krt/mfr) 0 0; %rear left tire
-   0 0 0 0 0;
-   0 0 0 (krt/mrr) 0;   %rear right tire
-   0 0 0 0 0;
-   0 0 0 0 1/I_pitch;
-   0 0 0 0 0;
-   0 0 0 0 0];
+   0 0 0 0 0 0;
+   0 0 0 0 0 0;
+   0 0 0 0 0 0;
+   (kft/mfl) 0 0 0 0 0;  %front left tire
+   0 0 0 0 0 0;
+   0 (kft/mfr) 0 0 0 0;  %front right tire
+   0 0 0 0 0 0;
+   0  0 (krt/mfr) 0 0 0; %rear left tire
+   0 0 0 0 0 0;
+   0 0 0 (krt/mrr) 0 0;   %rear right tire
+   0 0 0 0 0 0;
+   0 0 0 0 1/I_pitch 0;
+   0 0 0 0 0 0;
+   0 0 0 0 0 1/I_roll];
 
 
 C = [1 0 0 0 0 0 0 0 0 0 0 0 0 0 ; 
@@ -208,7 +208,7 @@ C = [1 0 0 0 0 0 0 0 0 0 0 0 0 0 ;
 
 
 
-D = zeros(15,5);
+D = zeros(15,6);
 D(15,5) = 1/ms;
 %% running simulink, extracting from simulink
 
