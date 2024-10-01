@@ -110,11 +110,11 @@ noiseLevel = 0;
 noise =rand(100000,1)*noiseLevel;
                          
 %Vehicle acceloration a(t)
-    acceloration_Func_long= @(t) 10.^(-t);                                      %m/s^2 long                       
+    acceloration_Func_long= @(t) 1;                                      %m/s^2 long                       
     Vehic_acc_long = timeseries(acceloration_Func_long(t_span'),t_span);
     Vehicle_acceloration_long = Vehic_acc_long.data;
 
-    acceloration_Func_lat= @(t) 10.^(-t);                                      %m/s^2 lat                       
+    acceloration_Func_lat= @(t) 1;                                      %m/s^2 lat                       
     Vehic_acc_lat = timeseries(acceloration_Func_lat(t_span'),t_span);
     Vehicle_acceloration_lat = Vehic_acc_lat.data;
 
@@ -130,16 +130,16 @@ noise =rand(100000,1)*noiseLevel;
 
 
 % road inputs r(x)
-    roadfl = @(x) 0*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
+    roadfl = @(x) 1*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
     road_inputfl = timeseries(roadfl(position'),t_span);
 
-    roadfr = @(x) 0*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
+    roadfr = @(x) 1*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
     road_inputfr = timeseries(roadfr(position'),t_span);
 
-    roadrr = @(x) 0*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
+    roadrr = @(x) 1*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
     road_inputrr = timeseries(roadrr(position'),t_span);
 
-    roadrl = @(x) 0*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
+    roadrl = @(x) 1*sin(2*pi*(((r-f)/(2*T)*x.^2 ))) + noise(ceil(x*1+2000+1));
     road_inputrl = timeseries(roadrl(position'),t_span);
 
 

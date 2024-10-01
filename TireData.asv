@@ -1,0 +1,3 @@
+TireFile = 'C:\Users\elija\OneDrive\Documents\MATLAB\Highlander racing\VD\FyP_MF62_SAE.tir'
+TIRfile = 'C:\Users\22oli\Documents\HR24E Calcs\Tire Models\mfTest4_mod.tir';
+obj = tireModel.import(A);
