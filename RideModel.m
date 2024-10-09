@@ -73,7 +73,7 @@ NatralFrequency = diag(EVal);
 
 %% Transfer function matrix [H] and modes
 
-w = 0:0.001:250;                     %frequency limit radians
+w = 0:0.00001:250;                     %frequency limit radians
 
 [H,wn] = calculateFRF(M,K,w,"N");   % output is in radians per sec
 H = (H)./(2*pi);

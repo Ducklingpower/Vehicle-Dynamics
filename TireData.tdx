@@ -1,0 +1,161 @@
+[MDI_HEADER]
+FILE_TYPE                = 'tir'                   
+FILE_VERSION             = 3.0                     
+FILE_FORMAT              = 'ASCII'                 
+
+$-----------------------------------------------------------------UNITS
+[UNITS]
+LENGTH                    = 'meter'                   $ 
+FORCE                     = 'newton'                  $ 
+ANGLE                     = 'radians'                 $ 
+MASS                      = 'kg'                      $ 
+TIME                      = 'second'                  $ 
+
+$-----------------------------------------------------------------MODEL
+[MODEL]
+PROPERTY_FILE_FORMAT      = 'MF62'                    $ 
+VXLOW                     = 1                         $ Lower boundary of slip calculation
+LONGVL                    = 27.7778                   $ Nominal speed
+TYRESIDE                  = 'RIGHT'                   $ 
+USE_MODE                  = 4                         $ Tyre use mode switch (ADAMS only)
+
+FITTYP                    = 61                        $ Magic Formula Version number
+ROAD_INCREMENT            = 0.01                      $ Increment in road sampling
+ROAD_DIRECTION            = 1                         $ Direction of travelled distance
+N_TIRE_STATES             = 4                         $ 
+HMAX_LOCAL                = 0.00025                   $ Local integration time step (ADAMS only)
+TIME_SWITCH_INTEG         = 0.1                       $ Time when local integrator is activated (ADAMS only)
+SANITY_CHECKS             = 'USE'                     $ Sanity check switch
+USE_TURNSLIP              = 0                         $ Turn slip coefficient switch
+COORD_SYS                 = 'SAE'                     $ Coordinate system: SAE, ISO, ADP_SAE, ADP_ISO
+
+$-------------------------------------------------------------DIMENSION
+[DIMENSION]
+UNLOADED_RADIUS           = 0.34                      $ Free tyre radius
+WIDTH                     = 0                         $ Nominal section width of the tyre
+ASPECT_RATIO              = 0                         $ Nominal aspect ratio
+RIM_RADIUS                = 0                         $ Nominal rim radius
+RIM_WIDTH                 = 0                         $ Rim width
+
+$-----------------------------------------------------------------SHAPE
+[SHAPE]
+{radial width}
+ 1.0    0.0 
+ 1.0    0.4 
+ 1.0    0.9 
+ 0.9    1.0 
+
+$--------------------------------------------------OPERATING_CONDITIONS
+[OPERATING_CONDITIONS]
+INFLPRES                  = 0                         $ Tyre inflation pressure
+NOMPRES                   = 180000                    $ Nominal tyre inflation pressure
+
+$----------------------------------------------INFLATION_PRESSURE_RANGE
+[INFLATION_PRESSURE_RANGE]
+PRESMIN                   = 0                         $ Minimum valid tyre inflation pressure
+PRESMAX                   = 1e+06                     $ Maximum valid tyre inflation pressure
+
+$--------------------------------------------------VERTICAL_FORCE_RANGE
+[VERTICAL_FORCE_RANGE]
+FZMIN                     = 0                         $ Minimum allowed wheel load
+FZMAX                     = 10000                     $ Maximum allowed wheel load
+
+$-------------------------------------------------------LONG_SLIP_RANGE
+[LONG_SLIP_RANGE]
+KPUMIN                    = -1                        $ Minimum valid wheel slip
+KPUMAX                    = 1                         $ Maximum valid wheel slip
+
+$------------------------------------------------------SLIP_ANGLE_RANGE
+[SLIP_ANGLE_RANGE]
+ALPMIN                    = -0.35                     $ Minimum valid slip angle
+ALPMAX                    = 0.35                      $ Maximum valid slip angle
+
+$-----------------------------------------------INCLINATION_ANGLE_RANGE
+[INCLINATION_ANGLE_RANGE]
+CAMMIN                    = -0.17                     $ Minimum valid camber angle
+CAMMAX                    = 0.17                      $ Maximum valid camber angle
+
+$---------------------------------------------------------------INERTIA
+[INERTIA]
+MASS                      = 0                         $ Tyre Mass
+IXX                       = 0                         $ Tyre diametral moment of inertia
+IYY                       = 0                         $ Tyre polar moment of inertia
+BELT_MASS                 = 0                         $ Belt mass
+BELT_IXX                  = 0                         $ Belt diametral moment of inertia
+BELT_IYY                  = 0                         $ Belt polar moment of inertia
+GRAVITY                   = 9.81                      $ Gravity acting on belt in Z direction
+
+$--------------------------------------------------------------VERTICAL
+[VERTICAL]
+FNOMIN                    = -6000                     $ Nominal wheel load
+VERTICAL_STIFFNESS        = 1                         $ Tyre vertical stiffness
+VERTICAL_DAMPING          = 0                         $ Tyre vertical damping
+MC_CONTOUR_A              = 0                         $ Motorcycle contour ellips A
+MC_CONTOUR_B              = 0                         $ Motorcycle contour ellips B
+BREFF                     = 0                         $ Low load stiffness effective rolling radius
+DREFF                     = 0                         $ Peak value of effective rolling radius
+FREFF                     = 0                         $ High load stiffness effective rolling radius
+Q_RE0                     = 1                         $ Ratio of free tyre radius with nominal tyre radius
+Q_V1                      = 0                         $ Tyre radius increase with speed
+Q_V2                      = 0                         $ Vertical stiffness increase with speed
+Q_FZ2                     = 0                         $ Quadratic term in load vs. deflection
+Q_FCX                     = 0                         $ Longitudinal force influence on vertical stiffness
+Q_FCY                     = 0                         $ Lateral force influence on vertical stiffness
+Q_CAM                     = 0                         $ Stiffness reduction due to camber
+PFZ1                      = 0                         $ Pressure effect on vertical stiffness
+Q_FCY2                    = 0                         $ Lateral force influence on vertical stiffness
+
+$------------------------------------------------------------STRUCTURAL
+[STRUCTURAL]
+LONGITUDINAL_STIFFNESS    = 0                         $ Tyre overall longitudinal stiffness
+LATERAL_STIFFNESS         = 0                         $ Tyre overall lateral stiffness
+YAW_STIFFNESS             = 0                         $ Tyre overall yaw stiffness
+FREQ_LONG                 = 0                         $ Undamped frequency fore/aft mode
+FREQ_LAT                  = 0                         $ Undamped frequency lateral mode
+FREQ_YAW                  = 0                         $ Undamped frequency yaw mode
+FREQ_WINDUP               = 0                         $ Undamped frequency wind-up mode
+DAMP_LONG                 = 0                         $ Damping fore/aft and vertical mode
+DAMP_LAT                  = 0                         $ Damping lateral mode
+DAMP_YAW                  = 0                         $ Damping yaw and camber mode
+DAMP_WINDUP               = 0                         $ Damping wind-up mode
+
+$---------------------------------------------------------CONTACT_PATCH
+[CONTACT_PATCH]
+Q_RA1                     = 0                         $ Square root term in contact length
+Q_RA2                     = 0                         $ Linear term in contact length
+Q_RB1                     = 0                         $ Root term in contact width
+Q_RB2                     = 0                         $ Linear term in contact width
+ELLIPS_SHIFT              = 0                         $ Ellipsoid shift scaling
+ELLIPS_LENGTH             = 0                         $ Semi major axis of ellipsoid
+ELLIPS_HEIGHT             = 0                         $ Semi minor axis of ellipsoid
+ELLIPS_ORDER              = 0                         $ Ellipsoid order
+
+$--------------------------------------------------SCALING_COEFFICIENTS
+[SCALING_COEFFICIENTS]
+LFZ0                      = 1                         $ Scale factor of nominal (rated) load
+LCX                       = 1                         $ Scale factor of Fx shape factor
+LMUX                      = 1                         $ Scale factor of Fx peak friction coefficient
+LEX                       = 1                         $ Scale factor of Fx curvature factor
+LKX                       = 1                         $ Scale factor of Fx slip stiffness
+LHX                       = 1                         $ Scale factor of Fx horizontal shift
+LVX                       = 1                         $ Scale factor of Fx vertical shift
+LCY                       = 1                         $ Scale factor of Fy shape factor
+LMUY                      = 0.73                      $ Scale factor of Fy peak friction coefficient
+
+$--------------------------------------------------ROLLING_COEFFICIENTS
+[ROLLING_COEFFICIENTS]
+QSY1                      = 0                         $ Rolling resistance torque coefficient
+QSY2                      = 0                         $ Rolling resistance torque depending on Fx
+QSY3                      = 0                         $ Rolling resistance torque depending on speed
+
+$-------------------------------------------------ALIGNING_COEFFICIENTS
+[ALIGNING_COEFFICIENTS]
+QBZ1                      = 0                         $ Trail slope factor for trail Bpt at Fznom
+QBZ2                      = 0                         $ Variation of slope Bpt with load
+QBZ3                      = 0                         $ Variation of slope Bpt with load squared
+QBZ4                      = 0                         $ Variation of slope Bpt with camber
+
+$-------------------------------------------------TURNSLIP_COEFFICIENTS
+[TURNSLIP_COEFFICIENTS]
+PDXP1                     = 0                         $ Peak Fx reduction due to spin parameter
+PDXP2                     = 0                         $ Peak Fx reduction due to spin with varying load
